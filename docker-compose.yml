@@ -1,0 +1,32 @@
+version: '3.7'
+
+services:
+  ### Frontend (react-start)) ##################################
+  frontend-serve:
+    image: scaffolding-frontend-start
+    build:
+      context: .
+      dockerfile: ./docker/Dockerfile
+      target: react-start
+    environment:
+      RUN_INSTALL: ${RUN_INSTALL}
+      REACT_APP_BASE_URL: ${REACT_APP_BASE_URL}
+      REACT_APP_FE_DOMAIN: ${REACT_APP_FE_DOMAIN}
+    ports:
+      - '88:3000'
+    volumes:
+      - .:/home/node/workdir/src:rw
+    container_name: scaffolding-frontend-start
+
+  ### Nginx (static webserver) ##############################
+  frontend-webserver:
+    image: scaffolding-frontend-webserver
+    build:
+      context: .
+      dockerfile: ./docker/Dockerfile
+      target: serve
+    environment:
+      {}
+    ports:
+      - '80:80'
+    container_name: scaffolding-frontend-webserver-service

@@ -1,0 +1,23 @@
+@import '../../../styles/styles.scss';
+
+.wrapper {
+  background-color: aliceblue;
+  max-width: 1350px;
+  height: auto;
+  margin: 0 auto;
+  padding: 50px;
+  width: auto;
+  height: auto;
+
+  p {
+    text-align: center;
+    font-size: 120%;
+    font-weight: 600;
+
+  }
+
+  [class*='chartContainer'] {
+    width: 400px;
+
+  }
+}
